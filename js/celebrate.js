@@ -481,7 +481,13 @@ const photos = [
 "images/photo17.jpg",
 "images/photo18.jpg",
 "images/photo19.jpg",
-"images/photo20.jpg"
+"images/photo20.jpg",
+"images/photo21.jpg",
+"images/photo22.jpg",   
+"images/photo23.jpg",
+"images/photo24.jpg",
+"images/photo25.jpg",   
+"images/photo26.jpg"
 
 ];
 
