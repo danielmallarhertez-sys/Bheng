@@ -1,0 +1,1120 @@
+/* ==========================
+   RESET
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+body{
+
+    min-height:100vh;
+
+    font-family:'Poppins',sans-serif;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ffd1e8,
+        #fff0f7,
+        #ffc1dc
+    );
+
+    overflow-x:hidden;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+
+/* ==========================
+   STAR BACKGROUND
+========================== */
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+width:100%;
+
+height:100%;
+
+background-image:
+
+radial-gradient(
+white 1px,
+transparent 1px
+);
+
+background-size:45px 45px;
+
+opacity:.35;
+
+animation:starsMove 25s linear infinite;
+
+z-index:0;
+
+}
+
+
+@keyframes starsMove{
+
+from{
+
+background-position:0 0;
+
+}
+
+to{
+
+background-position:300px 500px;
+
+}
+
+}
+
+
+
+/* ==========================
+   EFFECT LAYERS
+========================== */
+
+
+#confetti-container,
+#balloons,
+#sparkles,
+#hearts{
+
+position:fixed;
+
+width:100%;
+
+height:100%;
+
+top:0;
+
+left:0;
+
+pointer-events:none;
+
+overflow:hidden;
+
+z-index:2;
+
+}
+
+
+
+
+
+/* ==========================
+   MAIN CONTAINER
+========================== */
+
+
+.birthday-container{
+
+width:90%;
+
+max-width:900px;
+
+background:white;
+
+padding:45px;
+
+border-radius:35px;
+
+text-align:center;
+
+box-shadow:
+
+0 20px 60px rgba(214,27,96,.25);
+
+animation:fadeIn 1.5s ease;
+
+z-index:5;
+
+}
+
+
+
+@keyframes fadeIn{
+
+from{
+
+opacity:0;
+
+transform:translateY(50px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+
+
+
+
+/* ==========================
+   TITLE
+========================== */
+
+
+.birthday-title{
+
+font-family:'Great Vibes',cursive;
+
+font-size:75px;
+
+color:#e91e63;
+
+animation:pulse 2s infinite;
+
+}
+
+
+
+@keyframes pulse{
+
+50%{
+
+transform:scale(1.05);
+
+}
+
+}
+
+
+
+.birthday-subtitle{
+
+font-size:20px;
+
+color:#777;
+
+margin:15px;
+
+}
+
+
+
+
+
+/* ==========================
+   GIFT BOX
+========================== */
+
+
+#gift-area{
+
+margin:40px;
+
+}
+
+
+
+#giftBox{
+
+width:170px;
+
+height:170px;
+
+margin:auto;
+
+position:relative;
+
+cursor:pointer;
+
+perspective:800px;
+
+animation:bounce 2s infinite;
+
+}
+
+
+
+.gift-box{
+
+position:absolute;
+
+bottom:0;
+
+width:170px;
+
+height:120px;
+
+background:#e91e63;
+
+border-radius:10px;
+
+}
+
+
+
+.gift-lid{
+
+position:absolute;
+
+top:20px;
+
+left:-10px;
+
+width:190px;
+
+height:35px;
+
+background:#ff4081;
+
+border-radius:10px;
+
+z-index:3;
+
+transform-origin:bottom;
+
+transition:1s;
+
+}
+
+
+
+#giftBox.open .gift-lid{
+
+transform:
+
+translateY(-100px)
+
+rotateX(70deg)
+
+rotateZ(-20deg);
+
+}
+
+
+
+.vertical-ribbon{
+
+position:absolute;
+
+height:120px;
+
+width:25px;
+
+background:#ffd54f;
+
+left:72px;
+
+}
+
+
+
+.horizontal-ribbon{
+
+position:absolute;
+
+height:25px;
+
+width:170px;
+
+background:#ffd54f;
+
+top:50px;
+
+}
+
+
+
+.gift-bow{
+
+position:absolute;
+
+top:0;
+
+left:55px;
+
+width:60px;
+
+height:30px;
+
+}
+
+
+
+.gift-bow:before,
+.gift-bow:after{
+
+content:"";
+
+position:absolute;
+
+width:40px;
+
+height:40px;
+
+background:#ff4081;
+
+border-radius:50%;
+
+}
+
+
+.gift-bow:before{
+
+left:-25px;
+
+}
+
+
+.gift-bow:after{
+
+right:-25px;
+
+}
+
+
+@keyframes bounce{
+
+50%{
+
+transform:translateY(-15px);
+
+}
+
+}
+
+
+
+.click-text{
+
+margin-top:20px;
+
+color:#e91e63;
+
+font-weight:600;
+
+}
+/* ==========================
+   SURPRISE CONTENT
+========================== */
+
+
+#surpriseContent{
+
+display:none;
+
+animation:showContent 1s ease;
+
+}
+
+
+
+@keyframes showContent{
+
+from{
+
+opacity:0;
+
+transform:scale(.8);
+
+}
+
+to{
+
+opacity:1;
+
+transform:scale(1);
+
+}
+
+}
+
+
+
+
+
+h2{
+
+color:#e91e63;
+
+margin:25px;
+
+}
+
+
+
+
+
+/* ==========================
+   ENVELOPE
+========================== */
+
+
+.envelope{
+
+width:180px;
+
+height:120px;
+
+margin:30px auto;
+
+background:#ff4081;
+
+border-radius:10px;
+
+position:relative;
+
+cursor:pointer;
+
+box-shadow:
+
+0 10px 25px rgba(0,0,0,.2);
+
+}
+
+
+
+.envelope-top{
+
+position:absolute;
+
+left:0;
+
+top:0;
+
+width:0;
+
+height:0;
+
+border-left:90px solid transparent;
+
+border-right:90px solid transparent;
+
+border-top:70px solid #f06292;
+
+transform-origin:top;
+
+transition:.8s;
+
+}
+
+
+
+.envelope.open .envelope-top{
+
+transform:rotateX(180deg);
+
+}
+
+
+
+.envelope-body{
+
+height:100%;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:45px;
+
+}
+
+
+
+
+
+/* ==========================
+   LETTER
+========================== */
+
+
+.letter{
+
+background:#fff5fa;
+
+border-radius:20px;
+
+padding:25px;
+
+min-height:120px;
+
+font-size:18px;
+
+line-height:1.8;
+
+color:#555;
+
+box-shadow:
+
+0 5px 20px rgba(0,0,0,.08);
+
+}
+
+
+
+
+
+/* ==========================
+   PHOTO SLIDESHOW
+========================== */
+
+
+.slideshow{
+
+display:flex;
+
+justify-content:center;
+
+margin:30px;
+
+}
+
+
+
+.slideshow img{
+
+width:500px;
+
+height:500px;
+
+object-fit:cover;
+
+border-radius:35px;
+
+border:10px solid white;
+
+box-shadow:
+
+0 15px 40px rgba(0,0,0,.25);
+
+transition:
+
+opacity .8s ease,
+
+transform .5s ease;
+
+}
+
+
+
+.slideshow img:hover{
+
+transform:scale(1.08);
+
+}
+
+
+
+.slide-buttons button{
+
+background:#e91e63;
+
+color:white;
+
+border:none;
+
+padding:12px 20px;
+
+margin:10px;
+
+border-radius:30px;
+
+cursor:pointer;
+
+font-size:20px;
+
+}
+
+
+
+
+
+/* ==========================
+   CAKE
+========================== */
+
+
+.cake-section{
+
+margin:50px;
+
+}
+
+
+
+.cake{
+
+width:200px;
+
+height:150px;
+
+margin:auto;
+
+position:relative;
+
+}
+
+
+
+.cake-bottom{
+
+position:absolute;
+
+bottom:0;
+
+width:200px;
+
+height:80px;
+
+background:#ff80ab;
+
+border-radius:20px;
+
+}
+
+
+
+.cake-top{
+
+position:absolute;
+
+bottom:70px;
+
+left:20px;
+
+width:160px;
+
+height:50px;
+
+background:#f48fb1;
+
+border-radius:20px;
+
+}
+
+
+
+.candle{
+
+position:absolute;
+
+top:-60px;
+
+left:95px;
+
+height:60px;
+
+width:15px;
+
+background:#fff176;
+
+border-radius:5px;
+
+}
+
+
+
+.flame{
+
+position:absolute;
+
+top:-25px;
+
+left:-3px;
+
+width:20px;
+
+height:30px;
+
+background:#ff9800;
+
+border-radius:50%;
+
+animation:flicker .6s infinite alternate;
+
+}
+
+
+
+@keyframes flicker{
+
+from{
+
+transform:scale(1);
+
+opacity:1;
+
+}
+
+
+to{
+
+transform:scale(1.3);
+
+opacity:.7;
+
+}
+
+}
+
+
+
+
+
+/* ==========================
+   CONFETTI
+========================== */
+
+
+.confetti{
+
+position:absolute;
+
+width:12px;
+
+height:12px;
+
+animation:fall 5s linear infinite;
+
+}
+
+
+
+@keyframes fall{
+
+to{
+
+transform:
+
+translateY(110vh)
+
+rotate(720deg);
+
+}
+
+}
+
+
+
+
+
+/* ==========================
+   BALLOONS
+========================== */
+
+
+.balloon{
+
+position:absolute;
+
+bottom:-120px;
+
+width:70px;
+
+height:90px;
+
+border-radius:50%;
+
+animation:balloonUp 10s linear infinite;
+
+}
+
+
+
+@keyframes balloonUp{
+
+to{
+
+transform:translateY(-130vh);
+
+}
+
+}
+
+
+
+
+
+/* ==========================
+   HEARTS
+========================== */
+
+
+.heart{
+
+position:absolute;
+
+bottom:-50px;
+
+font-size:25px;
+
+animation:
+
+heartFloat 8s linear infinite;
+
+}
+
+
+
+@keyframes heartFloat{
+
+to{
+
+transform:
+
+translateY(-120vh)
+
+rotate(360deg);
+
+opacity:0;
+
+}
+
+}
+
+
+
+
+
+/* ==========================
+   SPARKLES
+========================== */
+
+
+.sparkle{
+
+position:absolute;
+
+color:white;
+
+font-size:25px;
+
+animation:sparkle 2s infinite;
+
+text-shadow:
+
+0 0 10px white,
+
+0 0 20px pink;
+
+}
+
+
+
+@keyframes sparkle{
+
+50%{
+
+opacity:.2;
+
+transform:scale(1.5);
+
+}
+
+}
+
+
+/* ==========================
+   VIDEO GALLERY
+========================== */
+
+
+#videoGallery{
+
+    display:none;
+
+}
+
+
+.videos{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+
+
+#birthdayVideo{
+
+    display:block;
+
+    width:500px;
+
+    height:500px;
+
+    object-fit:cover;
+
+    margin:30px auto;
+
+    border-radius:35px;
+
+    box-shadow:
+    0 15px 40px rgba(0,0,0,.25);
+
+}
+
+
+
+#videoNumber{
+
+    color:#e91e63;
+
+    font-size:20px;
+
+    margin:20px;
+
+}
+
+
+
+
+
+/* ==========================
+   MOBILE VIDEO
+========================== */
+
+
+@media(max-width:600px){
+
+
+#birthdayVideo{
+
+    width:300px;
+
+    height:300px;
+
+    object-fit:cover;
+
+}
+
+
+
+#videoNumber{
+
+    font-size:18px;
+
+}
+
+
+
+}
+
+
+
+
+
+/* ==========================
+   FOOTER
+========================== */
+
+
+footer{
+
+margin-top:20px;
+
+color:#777;
+
+padding:20px;
+
+}
+
+
+
+
+
+/* ==========================
+   MOBILE
+========================== */
+
+
+@media(max-width:600px){
+
+
+.birthday-container{
+
+padding:25px;
+
+}
+
+
+
+.birthday-title{
+
+font-size:50px;
+
+}
+
+
+
+.slideshow img{
+
+width:300px;
+
+height:300px;
+
+}
+
+
+
+#birthdayVideo{
+
+width:300px;
+
+height:300px;
+
+object-fit:cover;
+
+border-radius:25px;
+
+}
+
+
+
+#videoNumber{
+
+font-size:20px;
+
+margin:20px;
+
+}
+
+
+.envelope{
+
+transform:scale(.9);
+
+}
+
+
+
+.cake{
+
+transform:scale(.8);
+
+}
+
+
+}

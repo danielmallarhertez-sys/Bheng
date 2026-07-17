@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday ❤️</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/celebrate.css">
+
+</head>
+
+
+<body>
+
+
+<!-- Background Effects -->
+
+<div id="confetti-container"></div>
+
+<div id="balloons"></div>
+
+<div id="sparkles"></div>
+
+<div id="hearts"></div>
+
+
+
+<!-- Music -->
+
+<audio id="birthdayMusic" loop>
+
+<source src="music/birthday.mp3" type="audio/mpeg">
+
+</audio>
+
+
+
+<!-- Main Celebration Area -->
+
+<main class="birthday-container">
+
+
+<h1 class="birthday-title">
+
+🎉 Happy Birthday 🎉
+
+</h1>
+
+
+<p class="birthday-subtitle">
+
+A special surprise has been prepared just for you ❤️
+
+</p>
+
+
+
+<!-- Gift Box -->
+
+<section id="gift-area">
+
+
+<div id="giftBox" onclick="openGift()">
+
+<div class="gift-lid">
+</div>
+
+<div class="gift-box">
+
+<div class="vertical-ribbon"></div>
+
+<div class="horizontal-ribbon"></div>
+
+</div>
+
+<div class="gift-bow"></div>
+
+</div>
+
+
+</div>
+
+
+<p class="click-text">
+
+🎁 Click the gift to open
+
+</p>
+
+
+</section>
+
+
+
+
+<!-- Surprise Content -->
+
+<section id="surpriseContent">
+
+
+<h2>
+
+💖 A Message For You 💖
+
+</h2>
+
+
+
+<!-- Typing Letter -->
+
+<div class="letter">
+
+<p id="typedLetter"></p>
+
+</div>
+
+
+
+
+
+<!-- Photo Slideshow -->
+
+<section class="photo-section">
+
+
+<h2>
+
+📸 Beautiful Memories
+
+</h2>
+
+
+
+<div class="slideshow">
+
+
+<img id="slideImage"
+
+src="images/photo1.jpg"
+
+alt="Birthday Memory">
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+<!-- Video Gallery -->
+
+<section class="video-section" id="videoGallery">
+
+<h2>
+🎥 Special Videos
+</h2>
+
+
+<div class="videos">
+
+<video 
+id="birthdayVideo"
+playsinline
+controls>
+
+
+<source 
+id="videoSource"
+src="videos/video1.mp4"
+type="video/mp4">
+
+
+</video>
+
+</div>
+
+
+<p id="videoNumber">
+🎥 Video 1 / 10
+</p>
+
+
+</section>
+
+
+
+<!-- Music Control -->
+
+<button class="music-button" onclick="toggleMusic()">
+
+🎵 Play / Pause Music
+
+</button>
+
+
+
+
+</section>
+
+
+
+</main>
+
+
+
+
+
+<footer>
+
+Made with ❤️ especially for you
+
+</footer>
+
+
+
+
+
+<script src="js/celebrate.js"></script>
+
+
+</body>
+
+</html>
+

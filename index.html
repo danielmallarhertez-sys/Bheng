@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Birthday Surprise ❤️</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+font-family:Poppins,sans-serif;
+
+background:linear-gradient(135deg,#ffd6e8,#ffeef5,#fff7fb);
+
+overflow:hidden;
+
+height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+}
+
+/* Floating Hearts */
+
+.hearts{
+
+position:fixed;
+
+width:100%;
+
+height:100%;
+
+overflow:hidden;
+
+top:0;
+
+left:0;
+
+pointer-events:none;
+
+}
+
+.heart{
+
+position:absolute;
+
+bottom:-40px;
+
+font-size:25px;
+
+animation:floatUp linear infinite;
+
+opacity:.75;
+
+}
+
+@keyframes floatUp{
+
+0%{
+
+transform:translateY(0) scale(.7);
+
+opacity:0;
+
+}
+
+20%{
+
+opacity:1;
+
+}
+
+100%{
+
+transform:translateY(-120vh) rotate(360deg);
+
+opacity:0;
+
+}
+
+}
+
+/* Card */
+
+.card{
+
+width:90%;
+
+max-width:700px;
+
+background:white;
+
+padding:45px;
+
+border-radius:25px;
+
+box-shadow:0 15px 45px rgba(0,0,0,.15);
+
+text-align:center;
+
+z-index:10;
+
+animation:fadeIn 1.2s;
+
+}
+
+@keyframes fadeIn{
+
+from{
+
+opacity:0;
+
+transform:translateY(40px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+h1{
+
+font-family:"Great Vibes",cursive;
+
+font-size:60px;
+
+color:#e91e63;
+
+margin-bottom:15px;
+
+}
+
+.subtitle{
+
+font-size:18px;
+
+color:#666;
+
+margin-bottom:30px;
+
+}
+
+/* Countdown */
+
+#countdown{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:15px;
+
+margin:35px 0;
+
+}
+
+.time-box{
+
+background:#ffe3ef;
+
+padding:20px;
+
+border-radius:15px;
+
+}
+
+.time-box h2{
+
+font-size:38px;
+
+color:#d81b60;
+
+}
+
+.time-box span{
+
+font-size:14px;
+
+color:#555;
+
+}
+
+/* Gift */
+
+.gift{
+
+margin:35px auto;
+
+width:150px;
+
+cursor:not-allowed;
+
+animation:bounce 2s infinite;
+
+}
+
+.gift img{
+
+width:100%;
+
+}
+
+@keyframes bounce{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-10px);
+
+}
+
+}
+
+.note{
+
+font-size:17px;
+
+color:#777;
+
+line-height:1.8;
+
+margin-top:25px;
+
+}
+
+.footer{
+
+margin-top:25px;
+
+color:#999;
+
+font-size:14px;
+
+}
+
+/* Mobile */
+
+@media(max-width:650px){
+
+h1{
+
+font-size:42px;
+
+}
+
+#countdown{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.card{
+
+padding:25px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="hearts" id="hearts"></div>
+
+<div class="card">
+
+<h1>🎁 Birthday Surprise</h1>
+
+<p class="subtitle">
+Something special has been prepared just for you ❤️
+</p>
+
+<div id="countdown">
+
+<div class="time-box">
+<h2 id="days">0</h2>
+<span>Days</span>
+</div>
+
+<div class="time-box">
+<h2 id="hours">0</h2>
+<span>Hours</span>
+</div>
+
+<div class="time-box">
+<h2 id="minutes">0</h2>
+<span>Minutes</span>
+</div>
+
+<div class="time-box">
+<h2 id="seconds">0</h2>
+<span>Seconds</span>
+</div>
+
+</div>
+
+<div class="gift">
+
+<img src="https://cdn-icons-png.flaticon.com/512/869/869869.png">
+
+</div>
+
+<p class="note">
+
+This present is locked until
+
+<strong>July 16, 2026</strong>.
+
+<br><br>
+
+Come back on your birthday to open your surprise.
+
+❤️
+
+</p>
+
+<div class="footer">
+
+Made with love 💕
+
+</div>
+
+</div>
+<script src="js/script.js"></script>
+</body>
+</html>
