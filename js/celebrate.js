@@ -2,52 +2,34 @@
    BIRTHDAY CELEBRATION SCRIPT
 ===================================== */
 
-
 /* ==========================
    VARIABLES
 ========================== */
 
 let giftOpened = false;
-
 let musicPlaying = false;
 
 const music = document.getElementById("birthdayMusic");
-
-
 
 /* ==========================
    OPEN GIFT
 ========================== */
 
+function openGift() {
 
-function openGift(){
+    if (giftOpened) return;
 
-    if(giftOpened) return;
+    giftOpened = true;
 
-
-    giftOpened=true;
-
-
-    const gift =
-    document.getElementById("giftBox");
-
-
-    gift.classList.add("open");
-
+    document.getElementById("giftBox").classList.add("open");
 
     createConfetti();
 
+    setTimeout(() => {
 
-    setTimeout(()=>{
+        document.getElementById("gift-area").style.display = "none";
 
-
-        document.getElementById("gift-area")
-        .style.display="none";
-
-
-        document.getElementById("surpriseContent")
-        .style.display="block";
-
+        document.getElementById("surpriseContent").style.display = "block";
 
         startMusic();
 
@@ -61,575 +43,375 @@ function openGift(){
 
         startSlideshow();
 
-
-    },1200);
-
+    }, 1200);
 
 }
-
-
-
-
 
 /* ==========================
    MUSIC
 ========================== */
 
+function startMusic() {
 
-function startMusic(){
+    music.currentTime = 0;
 
-music.play()
-.then(()=>{
+    music.play()
+        .then(() => {
 
-musicPlaying=true;
+            musicPlaying = true;
 
-})
-.catch(()=>{
+        })
+        .catch(() => {
 
-console.log(
-"Click required for music"
-);
+            console.log("Music autoplay blocked.");
 
-});
-
-}
-
-
-
-function toggleMusic(){
-
-
-if(musicPlaying){
-
-music.pause();
-
-musicPlaying=false;
+        });
 
 }
 
-else{
+function toggleMusic() {
 
-music.play();
+    if (musicPlaying) {
 
-musicPlaying=true;
+        music.pause();
+
+        musicPlaying = false;
+
+    } else {
+
+        music.play();
+
+        musicPlaying = true;
+
+    }
 
 }
 
+/* ==========================
+   RANDOM COLOR
+========================== */
+
+function randomColor() {
+
+    const colors = [
+
+        "#e91e63",
+        "#ff4081",
+        "#ffd54f",
+        "#4fc3f7",
+        "#81c784",
+        "#ba68c8"
+
+    ];
+
+    return colors[Math.floor(Math.random() * colors.length)];
 
 }
-
-
-
-
 
 /* ==========================
    CONFETTI
 ========================== */
 
+function createConfetti() {
 
-function createConfetti(){
+    const box = document.getElementById("confetti-container");
 
+    for (let i = 0; i < 200; i++) {
 
-const box =
-document.getElementById(
-"confetti-container"
-);
+        const c = document.createElement("div");
 
+        c.className = "confetti";
 
+        c.style.left = Math.random() * 100 + "%";
 
-for(let i=0;i<200;i++){
+        c.style.top = "-20px";
 
+        c.style.background = randomColor();
 
-let c=document.createElement("div");
+        c.style.animationDuration = (3 + Math.random() * 5) + "s";
 
+        c.style.animationDelay = Math.random() * 3 + "s";
 
-c.className="confetti";
+        box.appendChild(c);
 
-
-c.style.left=
-Math.random()*100+"%";
-
-
-c.style.top="-20px";
-
-
-c.style.background=
-randomColor();
-
-
-c.style.animationDuration=
-(3+Math.random()*5)+"s";
-
-
-c.style.animationDelay=
-Math.random()*3+"s";
-
-
-box.appendChild(c);
-
+    }
 
 }
-
-
-}
-
-
-
-function randomColor(){
-
-const colors=[
-
-"#e91e63",
-"#ff4081",
-"#ffd54f",
-"#4fc3f7",
-"#81c784",
-"#ba68c8"
-
-];
-
-
-return colors[
-Math.floor(
-Math.random()*colors.length
-)
-];
-
-}
-
-
-
-
 
 /* ==========================
    BALLOONS
 ========================== */
 
+function createBalloons() {
 
-function createBalloons(){
+    const container = document.getElementById("balloons");
 
+    for (let i = 0; i < 20; i++) {
 
-const container =
-document.getElementById(
-"balloons"
-);
+        const balloon = document.createElement("div");
 
+        balloon.className = "balloon";
 
+        balloon.style.left = Math.random() * 100 + "%";
 
-for(let i=0;i<20;i++){
+        balloon.style.background = randomColor();
 
+        balloon.style.animationDelay = Math.random() * 8 + "s";
 
-let b=document.createElement("div");
+        container.appendChild(balloon);
 
-
-b.className="balloon";
-
-
-b.style.left=
-Math.random()*100+"%";
-
-
-b.style.background=
-randomColor();
-
-
-b.style.animationDelay=
-Math.random()*8+"s";
-
-
-container.appendChild(b);
-
+    }
 
 }
-
-
-}
-
-
-
-
 
 /* ==========================
    SPARKLES
 ========================== */
 
+function createSparkles() {
 
-function createSparkles(){
+    const container = document.getElementById("sparkles");
 
+    for (let i = 0; i < 50; i++) {
 
-const container =
-document.getElementById(
-"sparkles"
-);
+        const sparkle = document.createElement("div");
 
+        sparkle.className = "sparkle";
 
+        sparkle.innerHTML = "✨";
 
-for(let i=0;i<50;i++){
+        sparkle.style.left = Math.random() * 100 + "%";
 
+        sparkle.style.top = Math.random() * 100 + "%";
 
-let s=document.createElement("div");
+        container.appendChild(sparkle);
 
-
-s.className="sparkle";
-
-
-s.innerHTML="✨";
-
-
-s.style.left=
-Math.random()*100+"%";
-
-
-s.style.top=
-Math.random()*100+"%";
-
-
-container.appendChild(s);
-
+    }
 
 }
-
-
-}
-
-
-
-
 
 /* ==========================
    HEARTS
 ========================== */
 
+function createHearts() {
 
-function createHearts(){
+    const container = document.getElementById("hearts");
 
+    setInterval(() => {
 
-const container =
-document.getElementById(
-"hearts"
-);
+        const heart = document.createElement("div");
 
+        heart.className = "heart";
 
+        heart.innerHTML = "❤️";
 
-setInterval(()=>{
+        heart.style.left = Math.random() * 100 + "%";
 
+        heart.style.fontSize = (15 + Math.random() * 25) + "px";
 
-let h=document.createElement("div");
+        container.appendChild(heart);
 
+        setTimeout(() => {
 
-h.className="heart";
+            heart.remove();
 
+        }, 10000);
 
-h.innerHTML="❤️";
-
-
-h.style.left=
-Math.random()*100+"%";
-
-
-h.style.fontSize=
-(15+Math.random()*30)+"px";
-
-
-container.appendChild(h);
-
-
-
-setTimeout(()=>{
-
-h.remove();
-
-},10000);
-
-
-
-},400);
-
+    }, 400);
 
 }
-
-
-
-
 
 /* ==========================
-   TYPING LETTER
+   LETTER
 ========================== */
 
-
 const message = `
+Happy 40th Birthday! 🎂💕 Bheng ❤️
 
-Happy Birthday! 🎂 Bheng💕
+Today we celebrate not only your birthday, but 40 wonderful years of your beautiful life journey.
 
+From your family and friends, we want you to know how much you are loved and appreciated. Thank you for your kindness, your care, and for always being there for the people around you.
 
-Today is your special day.
+A special thank you for always supporting our parents, caring for them, and giving them love and strength. Your thoughtfulness means so much to our family, and we truly appreciate everything you do.
 
+May your 40th year be filled with:
 
-May your life always be filled with:
+❤️ Endless love  
+😊 Happiness every day  
+🌟 Success in all your dreams  
+✨ Good health and blessings  
+🎉 Beautiful memories with the people who love you  
 
-❤️ Love
+May you continue to smile, stay strong, and enjoy every precious moment of this new chapter.
 
-😊 Happiness
-
-🌟 Success
-
-🎉 Beautiful memories
-
-
-Keep smiling and never stop dreaming.
-
-
-Happy Birthday! 🎂💕
-
+Happy 40th Birthday, Bheng! 🎂💕
 `;
 
+let letterPosition = 0;
 
+function typeLetter() {
 
-let letterPosition=0;
+    const output = document.getElementById("typedLetter");
 
+    output.innerHTML = "";
 
+    letterPosition = 0;
 
-function typeLetter(){
+    function write() {
 
+        if (letterPosition < message.length) {
 
-const output =
-document.getElementById(
-"typedLetter"
-);
+            output.innerHTML += message.charAt(letterPosition);
 
+            letterPosition++;
 
+            setTimeout(write, 45);
 
-function write(){
+        }
 
+    }
 
-if(letterPosition < message.length){
-
-
-output.innerHTML +=
-message.charAt(letterPosition);
-
-
-letterPosition++;
-
-
-setTimeout(write,45);
-
+    write();
 
 }
-
-
-}
-
-
-write();
-
-
-}
-
-
-
-
 
 /* ==========================
    ENVELOPE
 ========================== */
 
+function openLetter() {
 
-function openLetter(){
-
-
-const envelope =
-document.querySelector(
-".envelope"
-);
-
-
-envelope.classList.toggle(
-"open"
-);
-
+    document.querySelector(".envelope").classList.toggle("open");
 
 }
-
-
-
-
-
 /* ==========================
-   PHOTO SLIDESHOW (20 PHOTOS)
+   PHOTO SLIDESHOW
 ========================== */
 
-
 const photos = [
-
-"images/photo1.jpg",
-"images/photo2.jpg",
-"images/photo3.jpg",
-"images/photo4.jpg",
-"images/photo5.jpg",
-"images/photo6.jpg",
-"images/photo7.jpg",
-"images/photo8.jpg",
-"images/photo9.jpg",
-"images/photo10.jpg",
-"images/photo11.jpg",
-"images/photo12.jpg",
-"images/photo13.jpg",
-"images/photo14.jpg",
-"images/photo15.jpg",
-"images/photo16.jpg",
-"images/photo17.jpg",
-"images/photo18.jpg",
-"images/photo19.jpg",
-"images/photo20.jpg",
-"images/photo21.jpg",
-"images/photo22.jpg",   
-"images/photo23.jpg",
-"images/photo24.jpg",
-"images/photo25.jpg",   
-"images/photo26.jpg"
-
+    "images/photo1.jpg",
+    "images/photo2.jpg",
+    "images/photo3.jpg",
+    "images/photo4.jpg",
+    "images/photo5.jpg",
+    "images/photo6.jpg",
+    "images/photo7.jpg",
+    "images/photo8.jpg",
+    "images/photo9.jpg",
+    "images/photo10.jpg",
+    "images/photo11.jpg",
+    "images/photo12.jpg",
+    "images/photo13.jpg",
+    "images/photo14.jpg",
+    "images/photo15.jpg",
+    "images/photo16.jpg",
+    "images/photo17.jpg",
+    "images/photo18.jpg",
+    "images/photo19.jpg",
+    "images/photo20.jpg",
+    "images/photo21.jpg",
+    "images/photo22.jpg",
+    "images/photo23.jpg",
+    "images/photo24.jpg",
+    "images/photo25.jpg",
+    "images/photo26.jpg"
 ];
 
-
 let currentPhoto = 0;
-
 let slideshowTimer = null;
 
-
-
-function startSlideshow(){
-
-
-currentPhoto = 0;
-
-
-// show first picture
-
-document.getElementById("slideImage").src =
-photos[currentPhoto];
-
-
-
-slideshowTimer = setInterval(()=>{
-
-
-currentPhoto++;
-
-
-
-// AFTER PHOTO 20 FINISHES
-
-if(currentPhoto >= photos.length){
-
-
-finishSlideshow();
-
-
-return;
-
-
-}
-
-
-
-changePhoto();
-
-
-
-},4000);
-
-
-}
-
-
-
-
-
-function changePhoto(){
-
-
-const image =
-document.getElementById("slideImage");
-
-
-
-image.style.opacity = 0;
-
-
-
-setTimeout(()=>{
-
-
-image.src = photos[currentPhoto];
-
-
-image.style.opacity = 1;
-
-
-},500);
-
-
-}
-
-
-
-
-
-function previousPhoto(){
-
-
-currentPhoto--;
-
-
-if(currentPhoto < 0){
-
-currentPhoto = photos.length - 1;
-
-}
-
-
-changePhoto();
-
-}
-
-
-
-
-function nextPhoto(){
-
-
-currentPhoto++;
-
-
-if(currentPhoto >= photos.length){
-
-currentPhoto = photos.length - 1;
-
-}
-
-
-changePhoto();
-
-}
-
-
-
-
-
-function finishSlideshow(){
+function startSlideshow() {
 
     clearInterval(slideshowTimer);
 
-    slideshowTimer = null;
+    currentPhoto = 0;
+
+    const image = document.getElementById("slideImage");
+
+    image.src = photos[currentPhoto];
+    image.style.opacity = 1;
+
+    slideshowTimer = setInterval(() => {
+
+        currentPhoto++;
+
+        if (currentPhoto >= photos.length) {
+
+            finishSlideshow();
+            return;
+
+        }
+
+        changePhoto();
+
+    }, 4000);
+
+}
+
+function changePhoto() {
+
+    const image = document.getElementById("slideImage");
+
+    image.style.opacity = 0;
+
+    setTimeout(() => {
+
+        image.src = photos[currentPhoto];
+
+        image.style.opacity = 1;
+
+    }, 500);
+
+}
+
+function previousPhoto() {
+
+    currentPhoto--;
+
+    if (currentPhoto < 0) {
+
+        currentPhoto = photos.length - 1;
+
+    }
+
+    changePhoto();
+
+}
+
+function nextPhoto() {
+
+    currentPhoto++;
+
+    if (currentPhoto >= photos.length) {
+
+        currentPhoto = 0;
+
+    }
+
+    changePhoto();
+
+}
+
+/* ==========================
+   PLAY VIDEO
+========================== */
+
+function finishSlideshow() {
+
+    clearInterval(slideshowTimer);
+
+    // If video already played, keep only photos + music looping
+    if (videoPlayed) {
+
+        startSlideshow();
+
+        return;
+
+    }
 
 
     // Stop birthday music
-
-    const music =
-    document.getElementById("birthdayMusic");
-
-
     music.pause();
 
     music.currentTime = 0;
@@ -637,92 +419,32 @@ function finishSlideshow(){
     musicPlaying = false;
 
 
-
-    // Hide photos
-
+    // Hide slideshow
     document.querySelector(".photo-section")
-    .style.display="none";
-
+    .style.display = "none";
 
 
     // Show video
-
-    const gallery =
-    document.getElementById("videoGallery");
-
-
-    const video =
-    document.getElementById("birthdayVideo");
+    document.getElementById("videoGallery")
+    .style.display = "block";
 
 
-    const source =
-    document.getElementById("videoSource");
+    const video = document.getElementById("birthdayVideo");
+
+    const source = document.getElementById("videoSource");
 
 
-
-    gallery.style.display="block";
-
-
-
-    source.src="videos/video1.mp4";
+    source.src = "videos/video1.mp4";
 
 
     video.load();
 
 
-
-    // Enable video sound
-
-    video.muted = false;
+    video.currentTime = 0;
 
     video.volume = 1;
 
-
-
-    video.play()
-
-    .then(()=>{
-
-        console.log("Video playing with sound");
-
-    })
-
-    .catch(error=>{
-
-        console.log("Video sound blocked:",error);
-
-    });
-
-
-}
-
-
-
-/* ==========================
-   VIDEO PLAYLIST (10 VIDEOS)
-========================== */
-
-let currentVideo = 1;
-const totalVideos = 10;
-
-
-function playBirthdayVideo(){
-
-    const video =
-    document.getElementById("birthdayVideo");
-
-
-    const source =
-    document.getElementById("videoSource");
-
-
-    source.src="videos/video1.mp4";
-
-
-    video.load();
-
-
-    video.muted=true;
+    video.muted = false;
 
 
     video.classList.add("show");
@@ -731,85 +453,76 @@ function playBirthdayVideo(){
     video.play()
     .then(()=>{
 
-        console.log("Video started");
+        console.log("Video playing");
 
     })
     .catch(error=>{
 
-        console.log("Autoplay blocked:",error);
+        console.log("Video autoplay blocked:", error);
 
     });
 
 
+
+
 }
+/* ==========================
+   VIDEO CONTROL
+========================== */
+
+let videoPlayed = false;
 
 
-
-
-// next video when finished
-
-document.addEventListener("DOMContentLoaded",()=>{
-
+document.addEventListener("DOMContentLoaded", () => {
 
     const video = document.getElementById("birthdayVideo");
 
-
-    video.addEventListener("ended",()=>{
-
-
-        currentVideo++;
+    // Hide video when page loads
+    document.getElementById("videoGallery").style.display = "none";
 
 
-        if(currentVideo <= totalVideos){
+    video.addEventListener("ended", () => {
 
 
-            const source =
-            document.getElementById("videoSource");
+        // Remember video has finished
+        videoPlayed = true;
 
 
-            source.src =
-            "videos/video" + currentVideo + ".mp4";
+        // Hide video
+        document.getElementById("videoGallery").style.display = "none";
 
 
-            video.load();
+        // Reset video
+        video.pause();
+        video.currentTime = 0;
 
 
-            video.muted = true;
+        // Show slideshow again
+        document.querySelector(".photo-section").style.display = "block";
 
 
-            video.play();
+        // Start music again
+        music.currentTime = 0;
 
 
-            updateVideoText();
+        music.play()
+        .then(()=>{
+
+            musicPlaying = true;
+
+        })
+        .catch(err=>{
+
+            console.log("Music blocked:",err);
+
+        });
 
 
-        }
+        // Restart photos
+        startSlideshow();
 
 
     });
 
 
 });
-
-
-
-
-
-function updateVideoText(){
-
-
-    const text =
-    document.getElementById("videoNumber");
-
-
-    if(text){
-
-        text.innerHTML =
-        "🎥 Video "
-        + currentVideo
-        + " / "
-        + totalVideos;
-
-    }
-
-}
