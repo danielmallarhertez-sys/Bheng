@@ -94,14 +94,12 @@ function toggleMusic() {
 function randomColor() {
 
     const colors = [
-
         "#e91e63",
         "#ff4081",
         "#ffd54f",
         "#4fc3f7",
         "#81c784",
         "#ba68c8"
-
     ];
 
     return colors[Math.floor(Math.random() * colors.length)];
@@ -229,23 +227,41 @@ function createHearts() {
 const message = `
 Happy 40th Birthday! 🎂💕 Bheng ❤️
 
-Today we celebrate not only your birthday, but 40 wonderful years of your beautiful life journey.
+Today we celebrate not only your birthday,
+but 40 wonderful years of your beautiful life journey.
 
-From your family and friends, we want you to know how much you are loved and appreciated. Thank you for your kindness, your care, and for always being there for the people around you.
+From your family and friends,
+we want you to know how much you are loved and appreciated.
 
-A special thank you for always supporting our parents, caring for them, and giving them love and strength. Your thoughtfulness means so much to our family, and we truly appreciate everything you do.
+Thank you for your kindness,
+your care,
+and for always being there for everyone around you.
+
+A special thank you for always supporting our parents,
+caring for them,
+and giving them love and strength.
+
+Your thoughtfulness means so much to our family,
+and we truly appreciate everything you do.
 
 May your 40th year be filled with:
 
-❤️ Endless love  
-😊 Happiness every day  
-🌟 Success in all your dreams  
-✨ Good health and blessings  
-🎉 Beautiful memories with the people who love you  
+❤️ Endless Love
 
-May you continue to smile, stay strong, and enjoy every precious moment of this new chapter.
+😊 Happiness Every Day
 
-Happy 40th Birthday, Bheng! 🎂💕
+🌟 Success in All Your Dreams
+
+✨ Good Health & Blessings
+
+🎉 Beautiful Memories
+
+May you continue to smile,
+stay strong,
+and enjoy every precious moment
+of this new chapter.
+
+Happy 40th Birthday! 🎂💕
 `;
 
 let letterPosition = 0;
@@ -335,6 +351,31 @@ const photos = [
 let currentPhoto = 0;
 let slideshowTimer = null;
 
+/* ==========================
+   VIDEO PLAYLIST
+========================== */
+
+const videoPlaylist = [
+    "videos/video1.mp4",
+    "videos/video2.mp4",
+    "videos/video3.mp4",
+    "videos/video4.mp4",
+    "videos/video5.mp4",
+    "videos/video6.mp4"
+    // Add more if you have them:
+    // "videos/video7.mp4",
+    // "videos/video8.mp4",
+    // "videos/video9.mp4",
+    // "videos/video10.mp4"
+];
+
+let currentVideoIndex = 0;
+let videosFinished = false;
+
+/* ==========================
+   START SLIDESHOW
+========================== */
+
 function startSlideshow() {
 
     clearInterval(slideshowTimer);
@@ -352,9 +393,26 @@ function startSlideshow() {
 
         if (currentPhoto >= photos.length) {
 
+            // After all videos have already played once,
+            // keep looping only the slideshow.
+            if (videosFinished) {
+
+                currentPhoto = 0;
+
+                image.style.opacity = 0;
+
+                setTimeout(() => {
+
+                    image.src = photos[currentPhoto];
+                    image.style.opacity = 1;
+
+                }, 500);
+
+                return;
+            }
+
             finishSlideshow();
             return;
-
         }
 
         changePhoto();
@@ -362,6 +420,10 @@ function startSlideshow() {
     }, 4000);
 
 }
+
+/* ==========================
+   CHANGE PHOTO
+========================== */
 
 function changePhoto() {
 
@@ -379,6 +441,10 @@ function changePhoto() {
 
 }
 
+/* ==========================
+   PREVIOUS PHOTO
+========================== */
+
 function previousPhoto() {
 
     currentPhoto--;
@@ -393,6 +459,10 @@ function previousPhoto() {
 
 }
 
+/* ==========================
+   NEXT PHOTO
+========================== */
+
 function nextPhoto() {
 
     currentPhoto++;
@@ -406,23 +476,13 @@ function nextPhoto() {
     changePhoto();
 
 }
-
-// Array to hold the list of video paths from video1 to video10
-const videoPlaylist = [];
-for (let i = 1; i <= 10; i++) {
-    videoPlaylist.push(`videos/video${i}.mp4`);
-}
-
-let currentVideoIndex = 0;
+/* ==========================
+   FINISH SLIDESHOW
+========================== */
 
 function finishSlideshow() {
-    clearInterval(slideshowTimer);
 
-    // If video sequence already played, keep only photos + music looping
-    if (videoPlayed) {
-        startSlideshow();
-        return;
-    }
+    clearInterval(slideshowTimer);
 
     // Stop birthday music
     music.pause();
@@ -432,108 +492,105 @@ function finishSlideshow() {
     // Hide slideshow
     document.querySelector(".photo-section").style.display = "none";
 
-    // Show video gallery
+    // Show video section
     document.getElementById("videoGallery").style.display = "block";
 
-    // Reset index and start playing the first video
+    // Start from first video
     currentVideoIndex = 0;
+
     playCurrentVideo();
+
 }
 
+/* ==========================
+   PLAY CURRENT VIDEO
+========================== */
+
 function playCurrentVideo() {
+
     const video = document.getElementById("birthdayVideo");
     const source = document.getElementById("videoSource");
 
-    if (currentVideoIndex < videoPlaylist.length) {
-        source.src = videoPlaylist[currentVideoIndex];
-        video.load();
-        
-        video.currentTime = 0;
-        video.volume = 1;
-        video.muted = false;
-        video.classList.add("show");
+    // All videos finished
+    if (currentVideoIndex >= videoPlaylist.length) {
 
-        video.play()
-            .then(() => {
-                console.log(`Playing: ${videoPlaylist[currentVideoIndex]}`);
-            })
-            .catch(error => {
-                console.log("Video autoplay blocked:", error);
-            });
-    } else {
-        // Once video10 finishes, mark as played and restart slideshow
-        console.log("All videos finished.");
-        videoPlayed = true;
-        
-        // Hide video gallery and restart slideshow
+        videosFinished = true;
+
+        video.pause();
+        video.currentTime = 0;
+
         document.getElementById("videoGallery").style.display = "none";
         document.querySelector(".photo-section").style.display = "block";
+
+        // Restart birthday music
+        music.currentTime = 0;
+
+        music.play()
+            .then(() => {
+
+                musicPlaying = true;
+
+            })
+            .catch(err => {
+
+                console.log(err);
+
+            });
+
+        // Restart slideshow
         startSlideshow();
+
+        return;
+
     }
+
+    source.src = videoPlaylist[currentVideoIndex];
+
+    video.load();
+
+    video.currentTime = 0;
+    video.volume = 1;
+    video.muted = false;
+
+    video.classList.add("show");
+
+    document.getElementById("videoNumber").innerHTML =
+        "🎥 Video " +
+        (currentVideoIndex + 1) +
+        " / " +
+        videoPlaylist.length;
+
+    video.play()
+        .then(() => {
+
+            console.log("Playing Video " + (currentVideoIndex + 1));
+
+        })
+        .catch(err => {
+
+            console.log(err);
+
+        });
+
 }
 
-// Automatically play the next video in sequence when the current one ends
-document.getElementById("birthdayVideo").onended = function() {
-    currentVideoIndex++;
-    playCurrentVideo();
-};
 /* ==========================
-   VIDEO CONTROL
+   VIDEO EVENTS
 ========================== */
-
-let videoPlayed = false;
-
 
 document.addEventListener("DOMContentLoaded", () => {
 
     const video = document.getElementById("birthdayVideo");
 
-    // Hide video when page loads
+    // Hide video section when page loads
     document.getElementById("videoGallery").style.display = "none";
-
 
     video.addEventListener("ended", () => {
 
+        currentVideoIndex++;
 
-        // Remember video has finished
-        videoPlayed = true;
-
-
-        // Hide video
-        document.getElementById("videoGallery").style.display = "none";
-
-
-        // Reset video
-        video.pause();
-        video.currentTime = 0;
-
-
-        // Show slideshow again
-        document.querySelector(".photo-section").style.display = "block";
-
-
-        // Start music again
-        music.currentTime = 0;
-
-
-        music.play()
-        .then(()=>{
-
-            musicPlaying = true;
-
-        })
-        .catch(err=>{
-
-            console.log("Music blocked:",err);
-
-        });
-
-
-        // Restart photos
-        startSlideshow();
-
+        playCurrentVideo();
 
     });
-
 
 });
