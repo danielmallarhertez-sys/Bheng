@@ -356,13 +356,13 @@ let slideshowTimer = null;
 ========================== */
 
 const videoPlaylist = [
-    "videos/Video1.mp4",
-    "videos/Video2.mp4",
-    "videos/Video3.mp4",
-    "videos/Video4.mp4",
-    "videos/Video5.mp4",
-    "videos/Video6.mp4",
-    "videos/Video7.mp4"
+    "videos/video1.mp4",
+    "videos/video2.mp4",
+    "videos/video3.mp4",
+    "videos/video4.mp4",
+    "videos/video5.mp4",
+    "videos/video6.mp4",
+    "videos/video7.mp4"
     // "videos/Video8.mp4",
     // "videos/Video9.mp4",
     // "videos/Video10.mp4"
