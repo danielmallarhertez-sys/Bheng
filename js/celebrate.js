@@ -315,7 +315,21 @@ const photos = [
     "images/photo23.jpg",
     "images/photo24.jpg",
     "images/photo25.jpg",
-    "images/photo26.jpg"
+    "images/photo26.jpg",
+    "images/photo27.jpg",
+    "images/photo28.jpg",
+    "images/photo29.jpg",
+    "images/photo30.jpg",
+    "images/photo31.jpg",
+    "images/photo32.jpg",
+    "images/photo33.jpg",
+    "images/photo34.jpg",
+    "images/photo35.jpg",
+    "images/photo36.jpg",
+    "images/photo37.jpg",
+    "images/photo38.jpg",
+    "images/photo39.jpg",
+    "images/photo40.jpg"
 ];
 
 let currentPhoto = 0;
