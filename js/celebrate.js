@@ -407,79 +407,76 @@ function nextPhoto() {
 
 }
 
-/* ==========================
-   PLAY VIDEO
-========================== */
+// Array to hold the list of video paths from video1 to video10
+const videoPlaylist = [];
+for (let i = 1; i <= 10; i++) {
+    videoPlaylist.push(`videos/video${i}.mp4`);
+}
+
+let currentVideoIndex = 0;
 
 function finishSlideshow() {
-
     clearInterval(slideshowTimer);
 
-    // If video already played, keep only photos + music looping
+    // If video sequence already played, keep only photos + music looping
     if (videoPlayed) {
-
         startSlideshow();
-
         return;
-
     }
-
 
     // Stop birthday music
     music.pause();
-
     music.currentTime = 0;
-
     musicPlaying = false;
 
-
     // Hide slideshow
-    document.querySelector(".photo-section")
-    .style.display = "none";
+    document.querySelector(".photo-section").style.display = "none";
 
+    // Show video gallery
+    document.getElementById("videoGallery").style.display = "block";
 
-    // Show video
-    document.getElementById("videoGallery")
-    .style.display = "block";
+    // Reset index and start playing the first video
+    currentVideoIndex = 0;
+    playCurrentVideo();
+}
 
-
+function playCurrentVideo() {
     const video = document.getElementById("birthdayVideo");
-
     const source = document.getElementById("videoSource");
 
+    if (currentVideoIndex < videoPlaylist.length) {
+        source.src = videoPlaylist[currentVideoIndex];
+        video.load();
+        
+        video.currentTime = 0;
+        video.volume = 1;
+        video.muted = false;
+        video.classList.add("show");
 
-    source.src = "videos/video1.mp4";
-
-
-    video.load();
-
-
-    video.currentTime = 0;
-
-    video.volume = 1;
-
-    video.muted = false;
-
-
-    video.classList.add("show");
-
-
-    video.play()
-    .then(()=>{
-
-        console.log("Video playing");
-
-    })
-    .catch(error=>{
-
-        console.log("Video autoplay blocked:", error);
-
-    });
-
-
-
-
+        video.play()
+            .then(() => {
+                console.log(`Playing: ${videoPlaylist[currentVideoIndex]}`);
+            })
+            .catch(error => {
+                console.log("Video autoplay blocked:", error);
+            });
+    } else {
+        // Once video10 finishes, mark as played and restart slideshow
+        console.log("All videos finished.");
+        videoPlayed = true;
+        
+        // Hide video gallery and restart slideshow
+        document.getElementById("videoGallery").style.display = "none";
+        document.querySelector(".photo-section").style.display = "block";
+        startSlideshow();
+    }
 }
+
+// Automatically play the next video in sequence when the current one ends
+document.getElementById("birthdayVideo").onended = function() {
+    currentVideoIndex++;
+    playCurrentVideo();
+};
 /* ==========================
    VIDEO CONTROL
 ========================== */
