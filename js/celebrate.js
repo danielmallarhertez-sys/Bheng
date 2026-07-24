@@ -345,7 +345,16 @@ const photos = [
     "images/photo37.jpg",
     "images/photo38.jpg",
     "images/photo39.jpg",
-    "images/photo40.jpg"
+    "images/photo40.jpg",
+	"images/photo41.jpg",
+	"images/photo42.jpg",
+	"images/photo43.jpg",
+	"images/photo44.jpg",
+	"images/photo45.jpg",
+	"images/photo46.jpg",
+	"images/photo47.jpg",
+	"images/photo48.jpg",
+	"images/photo49.jpg"
 
 ];
 
@@ -363,11 +372,20 @@ const videoPlaylist = [
     "videos/video4.mp4",
     "videos/video5.mp4",
     "videos/video6.mp4",
-    // Add more if you have them:
     "videos/video7.mp4"
-    // "videos/video8.mp4",
-    // "videos/video9.mp4",
-    // "videos/video10.mp4"
+    "videos/video8.mp4",
+    "videos/video9.mp4",
+    "videos/video10.mp4",
+	"videos/video11.mp4",
+	"videos/video12.mp4",
+	"videos/video13.mp4",
+	"videos/video14.mp4",
+	"videos/video15.mp4",
+	"videos/video16.mp4",
+	"videos/video17.mp4",
+	"videos/video18.mp4",
+	"videos/video19.mp4",
+	"videos/video20.mp4"
 ];
 
 let currentVideoIndex = 0;
