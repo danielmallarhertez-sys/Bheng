@@ -32,7 +32,7 @@ setInterval(createHeart,400);
 
 // Countdown
 
-const target = new Date("2026-07-16T00:00:00").getTime();
+const target = new Date("2026-07-25T00:00:00").getTime();
 
 console.log("Target:", new Date(target));
 
